@@ -122,9 +122,10 @@
         android:id="@+id/reg_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/go2"
         android:background="@color/white"
-        android:textColor="@color/black"/>
+        android:onClick="registerUser"
+        android:text="@string/go2"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/reg_login_btn"

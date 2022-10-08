@@ -23,6 +23,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+
         regName = findViewById(R.id.name);
         regUsername = findViewById(R.id.username);
         regEmail = findViewById(R.id.email);
@@ -31,14 +32,13 @@ public class SignUp extends AppCompatActivity {
         regBtn = findViewById(R.id.reg_btn);
         regToLoginBtn = findViewById(R.id.reg_login_btn);
 
-
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("users");
 
-                UserHelperClass addNewUser = new UserHelperClass(name);
+
 
                 //Get all values
                 String name = regName.getEditText().getText().toString();
@@ -47,11 +47,12 @@ public class SignUp extends AppCompatActivity {
                 String phoneNo = regPhoneNo.getEditText().getText().toString();
                 String password = regPassword.getEditText().getText().toString();
 
+                UserHelperClass addNewUser = new UserHelperClass(regName, regUsername, regEmail, regPhoneNo, regPassword);
 
-                 UserHelperClass helperClass = new UserHelperClass();
-
-                reference.child(phoneNo).setValue(helperClass);
+                reference.child(phoneNo).setValue(addNewUser);
             }
         });
     }
+
+
 }
